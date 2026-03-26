@@ -95,5 +95,4 @@ from mypackage.models import MyModel  # noqa: TC001 — Pydantic needs this at r
 
 - Conventional commits: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`
 - Feature branches: `feature/descriptive-name`
-- No `Co-Authored-By` in commit messages
 - Run `make ci` before merging
