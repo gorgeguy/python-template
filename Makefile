@@ -1,4 +1,4 @@
-.PHONY: install lint format typecheck test test-cov ci clean
+.PHONY: install lint format shadow typecheck test test-cov ci clean
 
 install:  ## Install dependencies and pre-commit hooks
 	uv sync
@@ -20,7 +20,10 @@ test:  ## Run tests
 test-cov:  ## Run tests with coverage
 	uv run --frozen pytest --cov --cov-report=term-missing
 
-ci: lint typecheck test  ## Run all checks (what CI runs)
+shadow:  ## Run shadow scan
+	uv run --frozen pre-commit run py-shadow-scan --all-files
+
+ci: lint shadow typecheck test  ## Run all checks (what CI runs)
 
 clean:  ## Remove build artifacts
 	rm -rf dist/ build/ *.egg-info/ .pytest_cache/ htmlcov/ .coverage .pyright/
